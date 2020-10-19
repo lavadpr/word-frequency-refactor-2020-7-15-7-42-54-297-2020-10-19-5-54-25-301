@@ -1,8 +1,10 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
     public static final String WHITESPACE = "\\s+";
+    public static final String NEW_LINE = "\n";
 
     public String getResult(String sentence) {
         if (sentence.split(WHITESPACE).length == 1) {
@@ -18,12 +20,9 @@ public class WordFrequencyGame {
     }
 
     private String formatWordInfo(List<WordInfo> wordInfoList) {
-        StringJoiner joiner = new StringJoiner("\n");
-        wordInfoList.forEach(wordInfo -> {
-            String wordInfoLine = String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount());
-            joiner.add(wordInfoLine);
-        });
-        return joiner.toString();
+        return wordInfoList.stream()
+                .map(wordInfo -> String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount()))
+                .collect(Collectors.joining(NEW_LINE));
     }
 
     private List<WordInfo> getWordInfoList(String sentence) {
