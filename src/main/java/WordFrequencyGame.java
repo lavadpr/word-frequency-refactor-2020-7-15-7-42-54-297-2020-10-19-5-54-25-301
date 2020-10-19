@@ -26,22 +26,12 @@ public class WordFrequencyGame {
     }
 
     private List<WordInfo> getWordInfoList(String sentence) {
-        String[] words = sentence.split(WHITESPACE);
-
+        List<String> words = Arrays.asList(sentence.split(WHITESPACE));
         List<WordInfo> wordInfoList = new ArrayList<>();
-        for (String word : words) {
-            WordInfo wordInfo = new WordInfo(word, 1);
-            wordInfoList.add(wordInfo);
+        for(String word : new HashSet<>(words)) {
+            int count = Collections.frequency(words, word);
+            wordInfoList.add(new WordInfo(word, count));
         }
-        Map<String, List<WordInfo>> wordInfoMap = getWordInfoMap(wordInfoList);
-
-        List<WordInfo> wordInfos = new ArrayList<>();
-        for (Map.Entry<String, List<WordInfo>> entry : wordInfoMap.entrySet()){
-            WordInfo wordInfo = new WordInfo(entry.getKey(), entry.getValue().size());
-            wordInfos.add(wordInfo);
-        }
-        wordInfoList = wordInfos;
-
         wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
         return wordInfoList;
     }
