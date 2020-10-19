@@ -34,7 +34,7 @@ public class WordFrequencyGame {
 
                 StringJoiner joiner = new StringJoiner("\n");
                 for (WordInfo wordInfo : wordInfoList) {
-                    String wordInfoLine = wordInfo.getValue() + " " + wordInfo.getWordCount();
+                    String wordInfoLine = String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount());
                     joiner.add(wordInfoLine);
                 }
                 return joiner.toString();
