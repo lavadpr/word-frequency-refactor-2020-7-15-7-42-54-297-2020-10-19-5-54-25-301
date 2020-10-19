@@ -19,10 +19,10 @@ public class WordFrequencyGame {
 
     private String formatWordInfo(List<WordInfo> wordInfoList) {
         StringJoiner joiner = new StringJoiner("\n");
-        for (WordInfo wordInfo : wordInfoList) {
+        wordInfoList.forEach(wordInfo -> {
             String wordInfoLine = String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount());
             joiner.add(wordInfoLine);
-        }
+        });
         return joiner.toString();
     }
 
