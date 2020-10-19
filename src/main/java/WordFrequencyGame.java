@@ -3,8 +3,8 @@ import java.util.stream.Collectors;
 
 public class WordFrequencyGame {
 
-    public static final String WHITESPACE = "\\s+";
-    public static final String NEW_LINE = "\n";
+    private static final String WHITESPACE = "\\s+";
+    private static final String NEW_LINE = "\n";
 
     public String getResult(String sentence) {
         if (sentence.split(WHITESPACE).length == 1) {
@@ -34,20 +34,5 @@ public class WordFrequencyGame {
         }
         wordInfoList.sort((firstWord, secondWord) -> secondWord.getWordCount() - firstWord.getWordCount());
         return wordInfoList;
-    }
-
-
-    private Map<String, List<WordInfo>> getWordInfoMap(List<WordInfo> wordInfoList) {
-        Map<String, List<WordInfo>> wordInfoMap = new HashMap<>();
-        for (WordInfo wordInfo : wordInfoList) {
-            if (!wordInfoMap.containsKey(wordInfo.getValue())) {
-                ArrayList wordInfos = new ArrayList<>();
-                wordInfos.add(wordInfo);
-                wordInfoMap.put(wordInfo.getValue(), wordInfos);
-            } else {
-                wordInfoMap.get(wordInfo.getValue()).add(wordInfo);
-            }
-        }
-        return wordInfoMap;
     }
 }
