@@ -20,7 +20,7 @@ public class WordFrequencyGame {
 
     private String formatWordInfo(List<WordInfo> wordInfoList) {
         return wordInfoList.stream()
-                .map(wordInfo -> String.format("%s %d", wordInfo.getValue(), wordInfo.getWordCount()))
+                .map(wordInfo -> String.format("%s %d", wordInfo.getWord(), wordInfo.getWordCount()))
                 .collect(Collectors.joining(NEW_LINE));
     }
 
