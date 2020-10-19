@@ -8,10 +8,7 @@ public class WordFrequencyGame {
         if (sentence.split(WHITESPACE).length==1) {
             return sentence + " 1";
         } else {
-
             try {
-
-                //split the input string with 1 to n pieces of spaces
                 String[] words = sentence.split(WHITESPACE);
 
                 List<WordInfo> wordInfoList = new ArrayList<>();
@@ -19,8 +16,6 @@ public class WordFrequencyGame {
                     WordInfo wordInfo = new WordInfo(word, 1);
                     wordInfoList.add(wordInfo);
                 }
-
-                //get the map for the next step of sizing the same word
                 Map<String, List<WordInfo>> map =getListMap(wordInfoList);
 
                 List<WordInfo> wordInfos = new ArrayList<>();
@@ -39,8 +34,6 @@ public class WordFrequencyGame {
                 }
                 return joiner.toString();
             } catch (Exception e) {
-
-
                 return "Calculate Error";
             }
         }
