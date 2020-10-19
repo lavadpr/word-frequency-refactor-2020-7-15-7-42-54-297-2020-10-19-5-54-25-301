@@ -7,15 +7,11 @@ public class WordFrequencyGame {
     private static final String NEW_LINE = "\n";
 
     public String getResult(String sentence) {
-        if (sentence.split(WHITESPACE).length == 1) {
-            return sentence + " 1";
-        } else {
-            try {
-                List<WordInfo> wordInfoList = getWordInfoList(sentence);
-                return formatWordInfo(wordInfoList);
-            } catch (Exception e) {
-                return "Calculate Error";
-            }
+        try {
+            List<WordInfo> wordInfoList = getWordInfoList(sentence);
+            return formatWordInfo(wordInfoList);
+        } catch (Exception e) {
+            return "Calculate Error";
         }
     }
 
@@ -28,7 +24,7 @@ public class WordFrequencyGame {
     private List<WordInfo> getWordInfoList(String sentence) {
         List<String> words = Arrays.asList(sentence.split(WHITESPACE));
         List<WordInfo> wordInfoList = new ArrayList<>();
-        for(String word : new HashSet<>(words)) {
+        for (String word : new HashSet<>(words)) {
             int count = Collections.frequency(words, word);
             wordInfoList.add(new WordInfo(word, count));
         }
